@@ -43,7 +43,13 @@ function optimized3() public optimized {
   [!] More expensive (gas): -2
 ```
 
-# Instructions
+## Proof-of-concept
+
+### [**⛳ Re:Golf Course**](https://github.com/ZeroEkkusu/re-golf-course)
+
+Proof-of-concept Golf Course, reimagined with our `GFlask` and a golf theme.
+
+## Instructions
 
 Download `foundryup`
 
