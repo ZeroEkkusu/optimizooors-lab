@@ -9,24 +9,24 @@ Optimize code and run tests with our equipment for optimizooors:
 ## Findings
 
 ```solidity
-function unoptimized0() public unoptimized {
+function method0() public unoptimized {
     uint256 i;
     i += 1;
 }
 
-// -----------------------------------------
+// ------------------------------------
 
-function optimized1() public optimized {
+function method1() public optimized {
     uint256 i;
     ++i;
 }
 
-function optimized2() public optimized {
+function method2() public optimized {
     uint256 i;
     i = i + 1;
 }
 
-function optimized3() public optimized {
+function method3() public optimized {
     uint256 i;
     i++;
 }
