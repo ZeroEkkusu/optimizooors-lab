@@ -15,11 +15,15 @@ import "src/GFlask.sol";
 
 contract MyLab is GFlask {
     function unoptimized0() public unoptimized {
-        for (uint256 i; i < 1; i++) {}
+        uint256 i;
+        i++;
     }
 
+    // -----------------------------------------
+
     function optimized1() public optimized {
-        for (uint256 i; i < 1; ++i) {}
+        uint256 i;
+        ++i;
     }
 
     function optimized2() public optimized {}
