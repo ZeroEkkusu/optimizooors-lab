@@ -14,21 +14,37 @@ pragma solidity 0.8.11;
 import "src/GFlask.sol";
 
 contract MyLab is GFlask {
-    function unoptimized0() public unoptimized {
+    function unoptimizedA0() public unoptimized("A") {
         for (uint256 i; i < 1; i++) {}
     }
 
-    function optimized1() public optimized {
+    function optimizedA1() public optimized("A") {
         for (uint256 i; i < 1; ++i) {}
     }
 
-    function optimized2() public optimized {}
+    function optimizedA2() public optimized("A") {}
 
-    function optimized3() public optimized {}
+    function optimizedA3() public optimized("A") {}
 
-    function optimized4() public optimized {}
+    function optimizedA4() public optimized("A") {}
 
-    function optimized5() public optimized {}
+    function optimizedA5() public optimized("A") {}
+
+    function unoptimizedB0() public unoptimized("B") {
+        for (uint256 i; i < 1; i++) {}
+    }
+
+    function optimizedB1() public optimized("B") {
+        for (uint256 i; i < 1; i += 1) {}
+    }
+
+    function optimizedB2() public optimized("B") {}
+
+    function optimizedB3() public optimized("B") {}
+
+    function optimizedB4() public optimized("B") {}
+
+    function optimizedB5() public optimized("B") {}
 
     /*////////////////////////////
     |  ⚠️ WARNING  [☣️ BIOHAZARD]  |
@@ -37,11 +53,18 @@ contract MyLab is GFlask {
     ////////////////////////////*/
 
     function test() public {
-        unoptimized0();
-        optimized1();
-        optimized2();
-        optimized3();
-        optimized4();
-        optimized5();
+        unoptimizedA0();
+        optimizedA1();
+        optimizedA2();
+        optimizedA3();
+        optimizedA4();
+        optimizedA5();
+
+        unoptimizedB0();
+        optimizedB1();
+        optimizedB2();
+        optimizedB3();
+        optimizedB4();
+        optimizedB5();
     }
 }
