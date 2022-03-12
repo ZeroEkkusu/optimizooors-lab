@@ -40,7 +40,7 @@ contract MyLab is GFlask {
 
     function methodB1() public optimized("B") {
         uint256 i;
-        +=i;
+        i += 1;
     }
 
     function methodB2() public optimized("B") {}
