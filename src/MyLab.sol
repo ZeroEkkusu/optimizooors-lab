@@ -12,9 +12,44 @@
 pragma solidity 0.8.11;
 
 import "src/GFlask.sol";
+import "src/GFlasks.sol";
 
 contract MyLab is GFlask {
+    function method0() public unoptimized {
+        uint256 i;
+        i++;
+    }
 
+    function method1() public optimized {
+        uint256 i;
+        ++i;
+    }
+
+    function method2() public optimized {}
+
+    function method3() public optimized {}
+
+    function method4() public optimized {}
+
+    function method5() public optimized {}
+
+    /*////////////////////////////
+    |  ⚠️ WARNING  [☣️ BIOHAZARD]  |
+    | -------------------------- |
+    | Authorized personnel only. |
+    ////////////////////////////*/
+
+    function test() public {
+        method0();
+        method1();
+        method2();
+        method3();
+        method4();
+        method5();
+    }
+}
+
+contract MyMultiLab is GFlasks {
     function methodA0() public unoptimized("A") {
         uint256 i;
         i++;

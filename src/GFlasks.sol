@@ -5,39 +5,39 @@ import "ds-test/test.sol";
 /// @title GFlask
 /// @author Zero Ekkusu
 /// @notice Measure gas savings with different optimizations
-contract GFlask is DSTest {
-    uint256 private gasUnoptimized;
-    uint256 private funCounter;
+contract GFlasks is DSTest {
+    mapping (string => uint256) private gasUnoptimized;
+    mapping (string => uint256) private funCounter;
 
-    modifier unoptimized() {
+    modifier unoptimized(string memory group) {
         uint256 startGas = gasleft();
         _;
         uint256 endGas = gasleft();
-        gFlask(false, startGas - endGas);
+        gFlask(false, startGas - endGas, group);
     }
 
-    modifier optimized() {
+    modifier optimized(string memory group) {
         uint256 startGas = gasleft();
         _;
         uint256 endGas = gasleft();
-        gFlask(true, startGas - endGas);
+        gFlask(true, startGas - endGas, group);
     }
 
-    function gFlask(bool _optimized, uint256 gas) private {
+    function gFlask(bool _optimized, uint256 gas, string memory group) private {
         if (gas == 10) {
             return;
         }
         if (!_optimized) {
             require(
-                gasUnoptimized == 0,
-                "More than 1 unoptimized function found!"
+                gasUnoptimized[group] == 0,
+                "More than 1 unoptimized function found for given group!"
             );
-            gasUnoptimized = gas;
+            gasUnoptimized[group] = gas;
             return;
         }
         emit log("");
-        emit log_named_uint("::", ++funCounter);
-        int256 savings = int256(gasUnoptimized) - int256(gas);
+        emit log_named_uint("::", ++funCounter[group]);
+        int256 savings = int256(gasUnoptimized[group]) - int256(gas);
         bool saved = savings > 0;
         if (savings == 0) {
             emit log("No savings.");
@@ -48,7 +48,7 @@ contract GFlask is DSTest {
             );
         }
         if (savings > 0) {
-            uint256 per = (gasUnoptimized * 1e2) / 100;
+            uint256 per = (gasUnoptimized[group] * 1e2) / 100;
             per = (uint256(savings) * 1e4) / per;
             emit log_named_decimal_uint("PERCENT (%)", per, 2);
         }
