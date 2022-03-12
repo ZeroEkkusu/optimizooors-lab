@@ -35,7 +35,7 @@ contract GFlask is DSTest {
             gasUnoptimized[group] = gas;
             return;
         }
-        emit log("\n");
+        emit log("");
         emit log_named_uint("::", ++funCounter[group]);
         int256 savings = int256(gasUnoptimized[group]) - int256(gas);
         bool saved = savings > 0;

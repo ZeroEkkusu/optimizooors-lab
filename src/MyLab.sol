@@ -14,37 +14,42 @@ pragma solidity 0.8.11;
 import "src/GFlask.sol";
 
 contract MyLab is GFlask {
-    function unoptimizedA0() public unoptimized("A") {
-        for (uint256 i; i < 1; i++) {}
+
+    function methodA0() public unoptimized("A") {
+        uint256 i;
+        i++;
     }
 
-    function optimizedA1() public optimized("A") {
-        for (uint256 i; i < 1; ++i) {}
+    function methodA1() public optimized("A") {
+        uint256 i;
+        ++i;
     }
 
-    function optimizedA2() public optimized("A") {}
+    function methodA2() public optimized("A") {}
 
-    function optimizedA3() public optimized("A") {}
+    function methodA3() public optimized("A") {}
 
-    function optimizedA4() public optimized("A") {}
+    function methodA4() public optimized("A") {}
 
-    function optimizedA5() public optimized("A") {}
+    function methodA5() public optimized("A") {}
 
-    function unoptimizedB0() public unoptimized("B") {
-        for (uint256 i; i < 1; i++) {}
+    function methodB0() public unoptimized("B") {
+        uint256 i;
+        i++;
     }
 
-    function optimizedB1() public optimized("B") {
-        for (uint256 i; i < 1; i += 1) {}
+    function methodB1() public optimized("B") {
+        uint256 i;
+        +=i;
     }
 
-    function optimizedB2() public optimized("B") {}
+    function methodB2() public optimized("B") {}
 
-    function optimizedB3() public optimized("B") {}
+    function methodB3() public optimized("B") {}
 
-    function optimizedB4() public optimized("B") {}
+    function methodB4() public optimized("B") {}
 
-    function optimizedB5() public optimized("B") {}
+    function methodB5() public optimized("B") {}
 
     /*////////////////////////////
     |  ⚠️ WARNING  [☣️ BIOHAZARD]  |
@@ -53,18 +58,18 @@ contract MyLab is GFlask {
     ////////////////////////////*/
 
     function test() public {
-        unoptimizedA0();
-        optimizedA1();
-        optimizedA2();
-        optimizedA3();
-        optimizedA4();
-        optimizedA5();
+        methodA0();
+        methodA1();
+        methodA2();
+        methodA3();
+        methodA4();
+        methodA5();
 
-        unoptimizedB0();
-        optimizedB1();
-        optimizedB2();
-        optimizedB3();
-        optimizedB4();
-        optimizedB5();
+        methodB0();
+        methodB1();
+        methodB2();
+        methodB3();
+        methodB4();
+        methodB5();
     }
 }
