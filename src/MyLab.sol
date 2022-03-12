@@ -19,6 +19,8 @@ contract MyLab is GFlask {
         i++;
     }
 
+    // ------------------------------------
+
     function method1() public optimized {
         uint256 i;
         ++i;
