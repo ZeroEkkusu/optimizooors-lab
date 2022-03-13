@@ -1,51 +1,52 @@
 // SPDX-License-Identifier: Unlicense
 
-// Welcome to the 🧪 Optimizooor's Lab!
-//
-// Get started:
-// 1. Set  Solidity version below
-// 2. Set `optimizer`       in `foundry.toml`
-// 3. Set `optimizer_runs`  in `foundry.toml`
-//
-// Optimize! Run experiments with `forge test`.
+/*
 
-pragma solidity 0.8.11;
-
-import "src/GFlask.sol";
-
-contract MyLab is GFlask {
-    function method0() public unoptimized {
-        uint256 i;
-        i++;
-    }
-
-    // ------------------------------------
-
-    function method1() public optimized {
-        uint256 i;
-        ++i;
-    }
-
-    function method2() public optimized {}
-
-    function method3() public optimized {}
-
-    function method4() public optimized {}
-
-    function method5() public optimized {}
-
-    /*////////////////////////////
+    |////////////////////////////|
     |  ⚠️ WARNING  [☣️ BIOHAZARD]  |
     | -------------------------- |
     | Authorized personnel only. |
-    ////////////////////////////*/
+    |////////////////////////////|
+
+*/
+
+import "src/Samples.sol";
+import "src/GFlask.sol";
+
+contract MyLab is GFlask {
+    function run(Sample0 s0) public unoptimized {
+        s0.unoptimized();
+    }
+
+    // ------------------------------------------
+
+    function run1(Sample1 s1) public optimized {
+        s1.optimized();
+    }
+
+    function run2(Sample2 s2) public optimized {
+        s2.optimized();
+    }
+
+    function run3(Sample3 s3) public optimized {
+        s3.optimized();
+    }
+
+    function run4(Sample4 s4) public optimized {
+        s4.optimized();
+    }
+
+    function run5(Sample5 s5) public optimized {
+        s5.optimized();
+    }
 
     function test() public {
-        method0();
-        method1();
-        method2();
-        method3();
-        method4();
-        method5();
+        measureEmpty();
+        run(new Sample0());
+        run1(new Sample1());
+        run2(new Sample2());
+        run3(new Sample3());
+        run4(new Sample4());
+        run5(new Sample5());
     }
 }

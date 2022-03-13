@@ -3,52 +3,24 @@
 **Welcome to the 🧪 Optimizooor's Lab!**
 
 Optimize code and run tests with our equipment for optimizooors:
-- **[`GFlask`](src/GFlask.sol)**: An instrument for measuring gas savings with different optimizations
 - **[`MyLab`](src/MyLab.sol)**: An environment for running controlled experiments
+- **[`GFlask`](src/GFlask.sol)**: An instrument for measuring gas savings with different optimizations
 
 ## Findings
 
 ```solidity
-function method0() public unoptimized {
-    uint256 i;
-    i += 1;
-}
+i += 1;
+// Given code
 
-// ------------------------------------
+++i;
+// SAVES (GAS): 3
 
-function method1() public optimized {
-    uint256 i;
-    ++i;
-}
+i = i + 1;
+// No savings.
 
-function method2() public optimized {
-    uint256 i;
-    i = i + 1;
-}
-
-function method3() public optimized {
-    uint256 i;
-    i++;
-}
+i++;
+// [!] More expensive (gas): -2
 ```
-
-```text
-  ::: 1
-  SAVES (GAS): 3
-  PERCENT (%): 3.33
-  
-  ::: 2
-  No savings.
-  
-  ::: 3
-  [!] More expensive (gas): -2
-```
-
-## Proof-of-concept
-
-### [**⛳ Re:Golf Course**](https://github.com/ZeroEkkusu/re-golf-course)
-
-Proof-of-concept Golf Course reimagined with our `GFlask` and a golf theme.
 
 ## Instructions
 
