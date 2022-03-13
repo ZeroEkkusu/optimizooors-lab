@@ -14,9 +14,11 @@ contract GFlasks is GUnit {
             gasUnoptimized[group] == 0,
             "More than 1 unoptimized function found for given group!"
         );
+
         uint256 startGas = gasleft();
         _;
         uint256 endGas = gasleft();
+
         (uint256 unoptimizedGas, uint256 counter) = GUnit.gFlask(
             false,
             startGas - endGas,
