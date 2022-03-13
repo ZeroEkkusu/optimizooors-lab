@@ -42,7 +42,10 @@ contract MyGroupedLab is GFlasks {
         i += 1;
     }
 
-    function methodB2() public optimized("B") {}
+    function methodB2() public optimized("B") {
+        uint256 i;
+        ++i;
+    }
 
     function methodB3() public optimized("B") {}
 
