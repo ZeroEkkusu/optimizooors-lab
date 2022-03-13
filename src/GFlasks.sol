@@ -17,25 +17,44 @@ contract GFlasks is DSTest {
         uint256 startGas = gasleft();
         _;
         uint256 endGas = gasleft();
-        gasUnoptimized[group] = gFlask(false, startGas - endGas, gasUnoptimized[group], group);
+        (uint256 unoptimizedGas, uint256 counter) = gFlask(
+            false,
+            startGas - endGas,
+            gasUnoptimized[group],
+            funCounter[group]
+        );
+        gasUnoptimized[group] = unoptimizedGas;
+        funCounter[group] = counter;
     }
 
     modifier optimized(string memory group) {
         uint256 startGas = gasleft();
         _;
         uint256 endGas = gasleft();
-        gasUnoptimized[group] = gFlask(true, startGas - endGas, gasUnoptimized[group], group);
+        (uint256 unoptimizedGas, uint256 counter) = gFlask(
+            true,
+            startGas - endGas,
+            gasUnoptimized[group],
+            funCounter[group]
+        );
+        gasUnoptimized[group] = unoptimizedGas;
+        funCounter[group] = counter;
     }
 
-    function gFlask(bool _optimized, uint256 gas, uint256 unoptimizedGas, string memory group) private returns (uint256) {
+    function gFlask(
+        bool _optimized,
+        uint256 gas,
+        uint256 unoptimizedGas,
+        uint256 counter
+    ) private returns (uint256, uint256) {
         if (gas == 10) {
-            return 10;
+            return (10, counter);
         }
         if (!_optimized) {
-            return gas;
+            return (gas, counter);
         }
         emit log("");
-        emit log_named_uint("::", ++funCounter[group]);
+        emit log_named_uint("::", ++counter);
         int256 savings = int256(unoptimizedGas) - int256(gas);
         bool saved = savings > 0;
         if (savings == 0) {
@@ -52,6 +71,6 @@ contract GFlasks is DSTest {
             emit log_named_decimal_uint("PERCENT (%)", per, 2);
         }
 
-        return unoptimizedGas;
+        return (unoptimizedGas, counter);
     }
 }
