@@ -10,34 +10,33 @@ contract GFlasks is DSTest {
     mapping (string => uint256) private funCounter;
 
     modifier unoptimized(string memory group) {
+        require(
+            gasUnoptimized[group] == 0,
+            "More than 1 unoptimized function found for given group!"
+        );
         uint256 startGas = gasleft();
         _;
         uint256 endGas = gasleft();
-        gFlask(false, startGas - endGas, group);
+        gasUnoptimized[group] = gFlask(false, startGas - endGas, gasUnoptimized[group], group);
     }
 
     modifier optimized(string memory group) {
         uint256 startGas = gasleft();
         _;
         uint256 endGas = gasleft();
-        gFlask(true, startGas - endGas, group);
+        gasUnoptimized[group] = gFlask(true, startGas - endGas, gasUnoptimized[group], group);
     }
 
-    function gFlask(bool _optimized, uint256 gas, string memory group) private {
+    function gFlask(bool _optimized, uint256 gas, uint256 unoptimizedGas, string memory group) private returns (uint256) {
         if (gas == 10) {
-            return;
+            return 10;
         }
         if (!_optimized) {
-            require(
-                gasUnoptimized[group] == 0,
-                "More than 1 unoptimized function found for given group!"
-            );
-            gasUnoptimized[group] = gas;
-            return;
+            return gas;
         }
         emit log("");
         emit log_named_uint("::", ++funCounter[group]);
-        int256 savings = int256(gasUnoptimized[group]) - int256(gas);
+        int256 savings = int256(unoptimizedGas) - int256(gas);
         bool saved = savings > 0;
         if (savings == 0) {
             emit log("No savings.");
@@ -48,9 +47,11 @@ contract GFlasks is DSTest {
             );
         }
         if (savings > 0) {
-            uint256 per = (gasUnoptimized[group] * 1e2) / 100;
+            uint256 per = (unoptimizedGas * 1e2) / 100;
             per = (uint256(savings) * 1e4) / per;
             emit log_named_decimal_uint("PERCENT (%)", per, 2);
         }
+
+        return unoptimizedGas;
     }
 }
