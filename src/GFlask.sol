@@ -1,5 +1,16 @@
 // SPDX-License-Identifier: Unlicense
 
+/*
+
+    |////////////////////////////|
+    |  ⚠️ WARNING  [ BIOHAZARD ]  |
+    | -------------------------- |
+    | Authorized personnel only. |
+    |////////////////////////////|
+
+*/
+
+import {Setup} from "src/Samples.sol";
 import "ds-test/test.sol";
 
 /// @title GFlask
@@ -18,7 +29,10 @@ contract GFlask is DSTest {
     }
 
     modifier optimized() {
-        require(gasUnoptimized != 0, "No unoptimized function found!");
+        require(
+            gasUnoptimized != 0,
+            "No unoptimized function found (or the optimizer inlined it)!"
+        );
         uint256 startGas = gasleft();
         _;
         uint256 endGas = gasleft();
@@ -54,12 +68,12 @@ contract GFlask is DSTest {
     function measureEmpty() public {
         Empty e = new Empty();
         uint256 startGas = gasleft();
-        e.empty();
+        e.optimized();
         uint256 endGas = gasleft();
         gasEmpty = startGas - endGas;
     }
 }
 
-contract Empty {
-    function empty() public {}
+contract Empty is Setup {
+    function optimized() public {}
 }

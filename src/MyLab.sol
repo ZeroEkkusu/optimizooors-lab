@@ -3,7 +3,7 @@
 /*
 
     |////////////////////////////|
-    |  ⚠️ WARNING  [☣️ BIOHAZARD]  |
+    |  ⚠️ WARNING  [ BIOHAZARD ]  |
     | -------------------------- |
     | Authorized personnel only. |
     |////////////////////////////|

@@ -9,8 +9,8 @@ Optimize code and run tests with our equipment for optimizooors:
 ## Findings
 
 ```solidity
+// Given code:
 i += 1;
-// Given code
 
 ++i;
 // SAVES (GAS): 3

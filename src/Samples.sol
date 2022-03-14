@@ -9,38 +9,40 @@
 //
 // Optimize! Run experiments with `forge test`.
 
+// Experiment name: __________
+
 pragma solidity 0.8.11;
 
-contract Sample0 {
-    uint256 i;
+import "src/Methods.sol";
 
+contract Setup is Methods {}
+
+contract Sample0 is Setup {
     function unoptimized() public {
-        i++;
+        doSomething();
     }
 }
 
-// --------------------------------
+// ----------------------------------
 
-contract Sample1 {
-    uint256 i;
-
+contract Sample1 is Setup {
     function optimized() public {
-        ++i;
+        doSomething();
     }
 }
 
-contract Sample2 {
+contract Sample2 is Setup {
     function optimized() public {}
 }
 
-contract Sample3 {
+contract Sample3 is Setup {
     function optimized() public {}
 }
 
-contract Sample4 {
+contract Sample4 is Setup {
     function optimized() public {}
 }
 
-contract Sample5 {
+contract Sample5 is Setup {
     function optimized() public {}
 }
