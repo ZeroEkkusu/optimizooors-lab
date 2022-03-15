@@ -49,7 +49,7 @@ contract Sample5 is SharedSetup {
 
 // Generated from https://github.com/ZeroEkkusu/optimizooors-lab
 
-/// @notice Customize the console output
+/// @notice Customize console output
 abstract contract Labels {
     string label0 = "";
     string label1 = "";
