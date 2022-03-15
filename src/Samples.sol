@@ -24,8 +24,6 @@ contract Sample0 is SharedSetup {
     }
 }
 
-// --------------------------------
-
 contract Sample1 is SharedSetup {
     function optimized() public {
         uint256 i;
@@ -51,9 +49,9 @@ contract Sample5 is SharedSetup {
 
 // Generated from https://github.com/ZeroEkkusu/optimizooors-lab
 
+/// @notice Customize the console output
 abstract contract Labels {
     string label0 = "";
-    // ----------------
     string label1 = "";
     string label2 = "";
     string label3 = "";

@@ -18,8 +18,6 @@ contract MyLab is GFlask, Labels {
         sample0.unoptimized();
     }
 
-    // -------------------------------------------------------
-
     function run1(Sample1 sample1) public optimized(label1) {
         sample1.optimized();
     }

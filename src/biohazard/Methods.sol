@@ -13,7 +13,7 @@
 abstract contract Methods {
     /// @notice A placeholder function you
     /// can use to prevent the optimizer
-    /// from inlining functions
+    /// from inlining your function
     function doSomething() internal pure {
         uint256 smth;
         smth++;

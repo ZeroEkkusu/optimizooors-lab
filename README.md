@@ -56,6 +56,8 @@ forge init --template https://github.com/ZeroEkkusu/optimizooors-lab my_lab
 forge install https://github.com/ZeroEkkusu/optimizooors-lab
 ```
 
+### Template usage
+
 To use [`MyLab`](src/biohazard/MyLab.sol), provide code samples in [`Samples.sol`](src/Samples.sol):
 
 ```solidity
@@ -65,8 +67,6 @@ contract Sample0 is SharedSetup {
         i++;
     }
 }
-
-// --------------------------------
 
 contract Sample1 is SharedSetup {
     function optimized() public {
@@ -78,7 +78,7 @@ contract Sample1 is SharedSetup {
 
 For more complex setups, use [`SharedSetup`](src/Samples.sol) to minimize boilerplate.
 
-Run `forge test` to compare all provided samples against `Sample0`.
+Run `forge test` to compare all provided samples against `Sample0`:
 
 ```console
 00x@ubuntu:~$ forge test
@@ -90,7 +90,6 @@ It is possible to customize the console output with [`Labels`](src/Samples.sol) 
 ```solidity
 abstract contract Labels {
     string label0 = "Increment `i++`";
-    // ----------------
     string label1 = "Use `++i` instead";
     string label2 = "";
     string label3 = "";
@@ -109,7 +108,7 @@ Use `++i` instead
 SAVES (GAS): 5
 ```
 
-You can use [`doSomething()`](src/biohazard/Methods.sol) as a placeholder whenever you need to prevent the optimizer from inlining your function:
+You can use [`doSomething()`](src/biohazard/Methods.sol) as a placeholder whenever you need to prevent the optimizer from inlining your function, instead of writing meaningless code:
 
 ```solidity
 contract Sample0 is SharedSetup {
@@ -117,8 +116,6 @@ contract Sample0 is SharedSetup {
         doSomething();
     }
 }
-
-// --------------------------------
 
 contract Sample1 is SharedSetup {
     function optimized() public payable {
@@ -130,6 +127,8 @@ contract Sample1 is SharedSetup {
 `Samples.sol` files are easy to share with others!
 
 Try copy-pasting their contents to another system and they'll work out of the box. No setup required.
+
+### GFlask usage
 
 To use [`GFlask`](src/biohazard/GFlask.sol) in your project, mark the function with unoptimized code as `unoptimized` and all the others you want to compare as `optimized`. You may leave them unlabeled (`""`). Call all of them inside a `test` function, first calling the unoptimized function:
 
