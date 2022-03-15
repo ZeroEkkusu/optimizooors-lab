@@ -10,9 +10,10 @@
 
 */
 
-contract Methods {
-    /// @notice Prevent the optimizer
-    /// @notice from inlining functions
+abstract contract Methods {
+    /// @notice A placeholder function you
+    /// can use to prevent the optimizer
+    /// from inlining functions
     function doSomething() internal pure {
         uint256 smth;
         smth++;

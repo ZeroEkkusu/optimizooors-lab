@@ -9,40 +9,54 @@
 //
 // Optimize! Run experiments with `forge test`.
 
-// Experiment name: __________
+// Experiment name: ____________
 
 pragma solidity 0.8.11;
 
-import "src/Methods.sol";
+import "src/biohazard/Methods.sol";
 
-contract Setup is Methods {}
+contract SharedSetup is Methods {}
 
-contract Sample0 is Setup {
+contract Sample0 is SharedSetup {
     function unoptimized() public {
-        doSomething();
+        uint256 i;
+        i++;
     }
 }
 
-// ----------------------------------
+// --------------------------------
 
-contract Sample1 is Setup {
+contract Sample1 is SharedSetup {
     function optimized() public {
-        doSomething();
+        uint256 i;
+        ++i;
     }
 }
 
-contract Sample2 is Setup {
+contract Sample2 is SharedSetup {
     function optimized() public {}
 }
 
-contract Sample3 is Setup {
+contract Sample3 is SharedSetup {
     function optimized() public {}
 }
 
-contract Sample4 is Setup {
+contract Sample4 is SharedSetup {
     function optimized() public {}
 }
 
-contract Sample5 is Setup {
+contract Sample5 is SharedSetup {
     function optimized() public {}
+}
+
+// Generated from https://github.com/ZeroEkkusu/optimizooors-lab
+
+abstract contract Labels {
+    string label0 = "";
+    // ----------------
+    string label1 = "";
+    string label2 = "";
+    string label3 = "";
+    string label4 = "";
+    string label5 = "";
 }
