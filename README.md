@@ -76,7 +76,7 @@ contract Sample1 is SharedSetup {
 }
 ```
 
-For more complex setups, use [`SharedSetup`](src/Samples.sol) to minimize boilerplate.
+**Note:** For more complex setups, use [`SharedSetup`](src/Samples.sol) to minimize boilerplate.
 
 Run `forge test` to compare all provided samples against `Sample0`:
 
@@ -85,7 +85,7 @@ Run `forge test` to compare all provided samples against `Sample0`:
 SAVES (GAS): 5
 ```
 
-It is possible to customize the console output with [`Labels`](src/Samples.sol) to create a shareable format:
+It is possible to customize the console output with [`Labels`](src/Samples.sol):
 
 ```solidity
 abstract contract Labels {
@@ -98,7 +98,7 @@ abstract contract Labels {
 }
 ```
 
-Let's run `forge test` now:
+Let's run `forge test` again:
 
 ```console
 00x@ubuntu:~$ forge test
@@ -130,18 +130,22 @@ Try copy-pasting their contents to another system and they'll work out of the bo
 
 ### GFlask usage
 
-To use [`GFlask`](src/biohazard/GFlask.sol) in your project, mark the function with unoptimized code as `unoptimized` and all the others you want to compare as `optimized`. You may leave them unlabeled (`""`). Call all of them inside a `test` function, first calling the unoptimized function:
+To use [`GFlask`](src/biohazard/GFlask.sol) in your project, mark the function with unoptimized code as `unoptimized` and the ones with optimized code as `optimized`.
+
+It is possible to customize the console output with labels. In the example below, we left them unlabeled (`""`).
+
+Then, call all of them inside one `test` function, first calling the unoptimized function:
 
 ```solidity
 import "optimizooors-lab/biohazard/GFlask.sol"
 
-contract YourContract {
-    function iPlusPlus() internal unoptimized("") {
+contract YourContract is GFlask {
+    function iPlusPlus() public unoptimized("") {
         uint i;
         i++;
     }
 
-    function plusPlusI() internal optimized("") {
+    function plusPlusI() public optimized("") {
         uint i;
         ++i;
     }
@@ -153,10 +157,21 @@ contract YourContract {
 }
 ```
 
-Measuring gas savings can be tricky sometimes!
+After running `forge test`, you get the following output:
+
+```console
+00x@ubuntu:~$ forge test
+SAVES (GAS): 5
+```
+
+<br>
+
+**Thank you for visiting the 🧪 Optimizooor's Lab!**
+
+Measuring gas savings can be tricky sometimes.
 
 It is useful to have basic knowledge of how the optimizer works, so you can isolate the code properly.
 
-E.g. If you stored `i` in storage instead of memory in the example above, the gas numbers would be incorrect.
+E.g. If you stored `i` in storage instead of memory in the example above, the gas numbers would be incorrect!
 
 Visit [**⛳ Re:Golf Course**](https://github.com/ZeroEkkusu/re-golf-course) to learn more about this and other common optimizations.
