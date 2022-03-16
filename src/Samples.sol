@@ -17,39 +17,40 @@ contract SharedSetup is Methods {
 
 }
 
+// Unoptimized sample
 contract Sample0 is SharedSetup {
-    function unoptimized() external {
+    function measureGas() external {
         uint256 i;
         i++;
     }
 }
 
 contract Sample1 is SharedSetup {
-    function optimized() external {
+    function measureGas() external {
         uint256 i;
         ++i;
     }
 }
 
 contract Sample2 is SharedSetup {
-    function optimized() external {}
+    function measureGas() external {}
 }
 
 contract Sample3 is SharedSetup {
-    function optimized() external {}
+    function measureGas() external {}
 }
 
 contract Sample4 is SharedSetup {
-    function optimized() external {}
+    function measureGas() external {}
 }
 
 contract Sample5 is SharedSetup {
-    function optimized() external {}
+    function measureGas() external {}
 }
 
 // Generated from https://github.com/ZeroEkkusu/optimizooors-lab
 
-/// @notice Customize console output
+// Customize console output
 abstract contract Labels {
     string label0 = "";
     string label1 = "";
