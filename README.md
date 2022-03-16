@@ -64,14 +64,14 @@ To use [`MyLab`](src/biohazard/MyLab.sol), provide code samples in [`Samples.sol
 
 ```solidity
 contract Sample0 is SharedSetup {
-    function unoptimized() external {
+    function measureGas() external {
         uint i;
         i++;
     }
 }
 
 contract Sample1 is SharedSetup {
-    function optimized() external {
+    function measureGas() external {
         uint i;
         ++i;
     }
@@ -116,13 +116,13 @@ You can use [`doSomething()`](src/biohazard/Methods.sol) as a placeholder whenev
 
 ```solidity
 contract Sample0 is SharedSetup {
-    function unoptimized() external {
+    function measureGas() external {
         doSomething();
     }
 }
 
 contract Sample1 is SharedSetup {
-    function optimized() external payable {
+    function measureGas() external payable {
         doSomething();
     }
 }
@@ -143,7 +143,7 @@ Then, call all the functions inside one `test` function, first calling the `unop
 ```solidity
 import "optimizooors-lab/biohazard/GFlask.sol"
 
-contract YourContract is GFlask {
+contract Increment is GFlask {
     function iPlusPlus() public unoptimized("") {
         uint i;
         i++;
