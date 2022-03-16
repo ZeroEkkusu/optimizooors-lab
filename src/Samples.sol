@@ -11,7 +11,7 @@ pragma solidity 0.8.11;
 //
 // Optimize! Run experiments with `forge test`.
 
-// Experiment name: ____________
+// Samples for: ____________
 
 contract SharedSetup is Methods {
 
