@@ -3,8 +3,10 @@
 **Welcome to the 🧪 Optimizooor's Lab!**
 
 Optimize code and run tests with our equipment for optimizooors:
-- **[`MyLab`](src/biohazard/MyLab.sol)**: An environment for running controlled experiments
-- **[`GFlask`](src/biohazard/GFlask.sol)**: An instrument for measuring gas savings with different optimizations
+- **[`MyLab`](#template-usage)**: An environment for running controlled experiments
+- **[`GFlask`](#gflask-usage)**: An instrument for measuring gas savings with different optimizations
+
+The lab runs natively in Solidity and is framework-agnostic.
 
 ## Findings
 
@@ -62,14 +64,14 @@ To use [`MyLab`](src/biohazard/MyLab.sol), provide code samples in [`Samples.sol
 
 ```solidity
 contract Sample0 is SharedSetup {
-    function unoptimized() public {
+    function unoptimized() external {
         uint i;
         i++;
     }
 }
 
 contract Sample1 is SharedSetup {
-    function optimized() public {
+    function optimized() external {
         uint i;
         ++i;
     }
@@ -108,17 +110,19 @@ Use `++i` instead
 SAVES (GAS): 5
 ```
 
+**Note:** Combine with other commands at your disposal for more power. You can run `forge test --gas-report` to print the absolute gas costs as well.
+
 You can use [`doSomething()`](src/biohazard/Methods.sol) as a placeholder whenever you need to prevent the optimizer from inlining your function, instead of writing meaningless code:
 
 ```solidity
 contract Sample0 is SharedSetup {
-    function unoptimized() public {
+    function unoptimized() external {
         doSomething();
     }
 }
 
 contract Sample1 is SharedSetup {
-    function optimized() public payable {
+    function optimized() external payable {
         doSomething();
     }
 }
@@ -134,7 +138,7 @@ To use [`GFlask`](src/biohazard/GFlask.sol) in your project, mark the function w
 
 It is possible to customize the console output with labels. In the example below, we left them unlabeled (`""`).
 
-Then, call all of them inside one `test` function, first calling the `unoptimized` function:
+Then, call all the functions inside one `test` function, first calling the `unoptimized` function:
 
 ```solidity
 import "optimizooors-lab/biohazard/GFlask.sol"
@@ -163,6 +167,8 @@ After running `forge test`, you get the following output:
 00x@ubuntu:~$ forge test
 SAVES (GAS): 5
 ```
+
+**Note:** Combine with other commands at your disposal for more power. You can run `forge test --gas-report` to print the absolute gas costs as well.
 
 <br>
 

@@ -18,33 +18,33 @@ contract SharedSetup is Methods {
 }
 
 contract Sample0 is SharedSetup {
-    function unoptimized() public {
+    function unoptimized() external {
         uint256 i;
         i++;
     }
 }
 
 contract Sample1 is SharedSetup {
-    function optimized() public {
+    function optimized() external {
         uint256 i;
         ++i;
     }
 }
 
 contract Sample2 is SharedSetup {
-    function optimized() public {}
+    function optimized() external {}
 }
 
 contract Sample3 is SharedSetup {
-    function optimized() public {}
+    function optimized() external {}
 }
 
 contract Sample4 is SharedSetup {
-    function optimized() public {}
+    function optimized() external {}
 }
 
 contract Sample5 is SharedSetup {
-    function optimized() public {}
+    function optimized() external {}
 }
 
 // Generated from https://github.com/ZeroEkkusu/optimizooors-lab

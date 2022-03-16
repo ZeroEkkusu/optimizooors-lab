@@ -38,7 +38,7 @@ contract MyLab is GFlask, Labels {
         sample5.optimized();
     }
 
-    function test() public {
+    function test() external {
         run(new Sample0());
         run1(new Sample1());
         run2(new Sample2());
