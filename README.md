@@ -134,7 +134,7 @@ To use [`GFlask`](src/biohazard/GFlask.sol) in your project, mark the function w
 
 It is possible to customize the console output with labels. In the example below, we left them unlabeled (`""`).
 
-Then, call all of them inside one `test` function, first calling the unoptimized function:
+Then, call all of them inside one `test` function, first calling the `unoptimized` function:
 
 ```solidity
 import "optimizooors-lab/biohazard/GFlask.sol"
