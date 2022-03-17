@@ -112,25 +112,9 @@ SAVES (GAS): 5
 
 **Note:** Combine with other commands at your disposal for more power. You can run `forge test --gas-report` to print the absolute gas costs as well.
 
-You can use [`doSomething()`](src/biohazard/Methods.sol) as a placeholder whenever you need to prevent the optimizer from inlining your function, instead of writing meaningless code:
-
-```solidity
-contract Sample0 is SharedSetup {
-    function measureGas() external {
-        doSomething();
-    }
-}
-
-contract Sample1 is SharedSetup {
-    function measureGas() external payable {
-        doSomething();
-    }
-}
-```
-
-`Samples.sol` files are easy to share with others!
-
-Try copy-pasting their contents to another system and they'll work out of the box. No setup required.
+> `Samples.sol` files are easy to share with others!
+>
+> Try copy-pasting their contents to another system and they'll work out of the box. No setup required.
 
 ### GFlask usage
 
