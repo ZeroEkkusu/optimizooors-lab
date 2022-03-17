@@ -19,10 +19,10 @@ Logs:
   Use `++i` instead
   SAVES (GAS): 3
   
-  `i = i + 1`
+  Try using `i = i + 1`
   No savings.
   
-  `i++`
+  Try using `i++`
   [!] More expensive (gas): -2
 ```
 
