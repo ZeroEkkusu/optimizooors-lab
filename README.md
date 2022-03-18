@@ -52,6 +52,8 @@ Create a new project using our template
 forge init --template https://github.com/ZeroEkkusu/optimizooors-lab my_lab
 ```
 
+**Note:** Run `forge install` afterward to install `DSTest`.
+
 ... or install as a dependency
 
 ```bash
