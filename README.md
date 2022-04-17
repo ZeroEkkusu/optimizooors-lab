@@ -6,23 +6,21 @@ Optimize code and run tests with our equipment for optimizooors:
 - **[`MyLab`](#template-usage)**: An environment for running controlled experiments
 - **[`GFlask`](#gflask-usage)**: An instrument for measuring gas savings with different optimizations
 
-The lab runs natively in Solidity and is framework-agnostic.
-
 ## Findings
 
 ```text
 Running 1 test for MyLab.json:MyLab
 [PASS] test() (gas: 510664)
 Logs:
-  Increment `i += 1`
+  Increment with `i += 1`
   
   Use `++i` instead
   SAVES (GAS): 3
   
-  Try using `i = i + 1`
+  Try `i = i + 1`
   No savings.
   
-  Try using `i++`
+  Try `i++`
   [!] More expensive (gas): -2
 ```
 
@@ -49,15 +47,13 @@ foundryup
 Create a new project using our template
 
 ```bash
-forge init --template https://github.com/ZeroEkkusu/optimizooors-lab my_lab
+forge init --template ZeroEkkusu/optimizooors-lab my-lab
 ```
-
-**Note:** Run `forge install` afterward to install `DSTest`.
 
 ... or install as a dependency
 
 ```bash
-forge install https://github.com/ZeroEkkusu/optimizooors-lab
+forge install ZeroEkkusu/optimizooors-lab
 ```
 
 ### Template usage
@@ -93,7 +89,7 @@ It is possible to customize the console output with [`Labels`](src/Samples.sol):
 
 ```solidity
 abstract contract Labels {
-    string label0 = "Increment `i++`";
+    string label0 = "Increment with `i++`";
     string label1 = "Use `++i` instead";
     string label2 = "";
     string label3 = "";
@@ -142,7 +138,7 @@ contract Increment is GFlask {
 
     function testIncrement() {
         iPlusPlus();
-        plusPlusI()
+        plusPlusI();
     }
 }
 ```
@@ -160,10 +156,6 @@ SAVES (GAS): 5
 
 **Thank you for visiting the 🧪 Optimizooor's Lab!**
 
-Measuring gas savings can be tricky sometimes.
+Measuring gas savings can be tricky sometimes. It is useful to have basic knowledge of how the optimizer works, so you can isolate the code properly.
 
-It is useful to have basic knowledge of how the optimizer works, so you can isolate the code properly.
-
-E.g. If you stored `i` in storage instead of memory in the example above, the gas numbers would be incorrect!
-
-Visit [**⛳ Re:Golf Course**](https://github.com/ZeroEkkusu/re-golf-course) to learn more about this and other common optimizations.
+Visit [**⛳ Re:Golf Course**](https://github.com/ZeroEkkusu/re-golf-course) to learn more about this, as well as common optimization tips and myths.
